@@ -105,6 +105,7 @@ class Ui_MainWindow(object):
     def directory_create(self):
         try:
             directory_location = (self.lineEdit.text()) #input string location address
+            directory_location = directory_location.replace('\\', '/')
             print(directory_location)
             xroot_directory = directory_location
             print(os.getcwd())
@@ -116,7 +117,7 @@ class Ui_MainWindow(object):
             root = directory_name
             os.mkdir(root)
             print(os.getcwd())
-           
+
             directory_subfolder_name = (self.lineEdit_3.text()) #input string sub folder name
             print(directory_subfolder_name)
             folder_name = directory_subfolder_name
@@ -147,7 +148,7 @@ class Ui_MainWindow(object):
 
             for folder in folders:
                 os.mkdir(os.path.join(root, folder))
-            
+
             self.window = QtWidgets.QWidget()
 
         except ValueError:
@@ -185,7 +186,7 @@ class Ui_MainWindow(object):
         msg.setStandardButtons(QMessageBox.Retry)
         x = msg.exec_()
 
-        
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
